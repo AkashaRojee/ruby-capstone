@@ -1,3 +1,5 @@
+require 'date'
+
 class Item
 
   attr_accessor :genre, :author
@@ -20,4 +22,10 @@ class Item
     # AKASHA: after creating Author class - author.items.push(self) 
   end
 
+  def can_be_archived?
+    today = Date.today()  
+    (today-Date.parse(published)).to_i/365 > 10
+  end
+
 end
+
