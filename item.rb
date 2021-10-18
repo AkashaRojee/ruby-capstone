@@ -3,6 +3,7 @@ require 'date'
 class Item
 
   attr_accessor :genre, :author
+  attr_reader :source
 
   def initialize(source, label, publish_date)
     @id = Random.rand(0..10_000)
@@ -12,7 +13,7 @@ class Item
     @archived = false
   end
 
-  def genre=(genre)
+  def genre(genre)
     @genre = genre
     # AKASHA: after creating Genre class - genre.items.push(self) 
   end
