@@ -27,5 +27,11 @@ class Item
     (today-Date.parse(published)).to_i/365 > 10
   end
 
+  def move_to_archive
+    if can_be_archived?
+      @archived = true
+    end
+  end
+
 end
 
