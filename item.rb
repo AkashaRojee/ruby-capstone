@@ -22,13 +22,14 @@ class Item
     # AKASHA: after creating Author class - author.items.push(self) 
   end
 
+  def move_to_archive
+    @archived = can_be_archived?
+  end
+
+  private
   def can_be_archived?
     today = Date.today()  
     (today-Date.parse(published)).to_i/365 > 10
-  end
-
-  def move_to_archive
-    @archived = can_be_archived?
   end
 end
 
