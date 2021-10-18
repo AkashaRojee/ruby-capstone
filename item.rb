@@ -28,8 +28,7 @@ class Item
 
   private
   def can_be_archived?
-    today = Date.today()  
-    (today - Date.parse(@publish_date)).to_i/365 > 10
+    (Date.today() - Date.parse(@publish_date)).to_i/365 > 10
   end
 end
 
