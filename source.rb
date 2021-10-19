@@ -3,7 +3,7 @@ class Source
   attr_reader :items
 
   def initialize(name)
-    @id = Random.rand(1..1000)
+    @id = Random.rand(1..10_000)
     @name = name
     @items = []
   end
