@@ -1,6 +1,7 @@
 require 'date'
 
 class Item
+  attr_accessor :genre, :author
   def initialize(publish_date)
     @id = Random.rand(0..10_000)
     # @source = source
@@ -9,7 +10,7 @@ class Item
     @archived = false
   end
 
-  attr_writer :genre, :author
+  
 
   def source=(source)
     @source = source
