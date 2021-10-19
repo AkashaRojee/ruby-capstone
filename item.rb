@@ -12,22 +12,22 @@ class Item
     @publish_date = publish_date
     @archived = false
   end
-  def genre(genre)
+  def add_genre(genre)
     @genre = genre
     genre.items.push(self) unless genre.items.include?(self)
   end
 
-  def author(author)
+  def add_author(author)
     @author = author
     author.items.push(self) unless author.items.include?(self)
   end
 
-  def source(source)
+  def add_source(source)
     @source = source
     source.items.push(self) unless source.items.include?(self)
   end
 
-  def label(label)
+  def add_label(label)
     @label = label
     label.items.push(self) unless label.items.include?(self)
   end
