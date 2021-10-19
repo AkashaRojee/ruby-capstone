@@ -27,7 +27,7 @@ class Item
 
   def label=(label)
     @label = label
-    # AKASHA: after creating Label class - label.items.push(self) 
+    label.items.push(self) unless label.items.include?(self)
   end
 
   def move_to_archive
