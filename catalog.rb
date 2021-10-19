@@ -50,7 +50,6 @@ class Catalog
       books_json.each_with_index do |book_json, index|
         label = labels.detect { |label_json| label_json.id == book_json['label_id'] }
         book = books[index]
-        puts label
         book.label = label
       end
     end

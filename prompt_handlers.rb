@@ -9,7 +9,7 @@ module PromptHandlers
 
   def prompt_option(text, options)
     puts "\n***SELECT LABEL***\n\n"
-    options&.each_with_index { |option, index| puts "#{index} - #{option}" }
+    options&.each_with_index { |option, index| puts "#{index} - #{option}\n" }
     prompt(text)
   end
 

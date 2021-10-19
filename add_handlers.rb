@@ -18,8 +18,8 @@ module AddHandlers
   def add_label(item)
   
     option = prompt_option(
-      "Enter existing label number or enter N to add new label",
-      @labels
+      "\nEnter existing label number or enter N to add new label",
+      @catalog.labels
     )
 
     if option == 'N'
@@ -27,7 +27,7 @@ module AddHandlers
       label = create_label(label_details)
       @catalog.add_label(label)
     else
-      label = @labels[option.to_i]
+      label = @catalog.labels[option.to_i]
     end
 
     item.label = label
