@@ -7,8 +7,8 @@ class Source
     @items = []
   end
 
-  def add_item (item)
-    @items.push(item) 
+  def add_item(item)
+    @items.push(item)
     item.source = self
   end
 end
