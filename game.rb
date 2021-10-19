@@ -8,7 +8,7 @@ class Game < Item
   end
 
   def to_s
-    "[Game] Publish date: #{@publish_date} Multiplayer: #{@multiplayer} Last played: #{@last_played_at}"
+    "[Game] id: #{@id} Publish date: #{@publish_date} Multiplayer: #{@multiplayer} Last played: #{@last_played_at}"
   end
 
   def to_json(*args)
