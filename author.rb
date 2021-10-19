@@ -27,5 +27,9 @@ class Author
     }.to_json(*args)
   end
 
-  
+  def self.json_create(object)
+    author = new(object['first_name'], object['last_name'])
+    author.id = object['id']
+    author
+  end
 end
