@@ -23,4 +23,10 @@ class MusicAlbum < Item
       'publish_date' => @publish_date,
     }.to_json(*args)
   end
+
+  def self.json_create(object)
+    music_album = new(object['on_spotify'], Time.parse(object['publish_date']))
+    music_album.id = object['id']
+    music_album
+  end
 end
