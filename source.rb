@@ -13,5 +13,9 @@ class Source
     item.add_source self
   end
 
+  def to_s
+    @name
+  end
+
 
 end
