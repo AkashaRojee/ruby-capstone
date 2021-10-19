@@ -12,16 +12,11 @@ class Item
     @publish_date = publish_date
     @archived = false
   end
-
   def genre(genre)
     @genre = genre
-    # AKASHA: after creating Genre class - genre.items.push(self) 
+    genre.items.push(self) unless genre.items.include?(self)
   end
 
-  def author=(author)
-    @author = author
-    # AKASHA: after creating Author class - author.items.push(self) 
-  end
 
   def move_to_archive
     @archived = can_be_archived?
