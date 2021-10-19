@@ -1,4 +1,5 @@
 require_relative 'item'
+require 'time'
 
 class Book < Item
 
@@ -13,16 +14,18 @@ class Book < Item
   end
 
   def to_json(*args)
-    {
+    super.merge({
       JSON.create_id => self.class.name,
-      'publish_date' => @publish_date,
       'publisher' => @publisher,
       'cover_state' => @cover_state
-    }.to_json(*args)
+    }).to_json(*args)
   end
 
   def self.json_create(object)
-    new(object['publish_date'], object['publisher'], object['cover_state'])
+    book = new(object['publisher'], object['cover_state'], Time.parse(object['publish_date']))
+    book.id = object['id']
+    puts book
+    book
   end
 
   private

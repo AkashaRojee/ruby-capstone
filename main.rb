@@ -25,6 +25,7 @@ class Main
       handle_choice(choice)
     end
 
+    @catalog.save_files
     puts "\nThank you for using the catalog!\n"
 
   end
@@ -70,8 +71,6 @@ class Main
       # method_8 call
     when 9 
       # method_9 call
-    when 10
-      @catalog.save_files
     else
       puts "\nERROR: Invalid option. See available options below.\n"
     end

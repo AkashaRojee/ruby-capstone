@@ -2,7 +2,7 @@ require 'date'
 
 class Item
 
-  attr_accessor :genre, :author, :source, :label
+  attr_accessor :id, :genre, :author, :source, :label
 
   def initialize(publish_date)
     @id = Random.rand(0..10_000)
@@ -36,6 +36,15 @@ class Item
 
   def to_s
     "Publish date: #{@publish_date}, Archived: #{@archived}\n#{@label}"
+  end
+
+  def to_json(_args)
+    {
+      'id' => @id,
+      'publish_date' => @publish_date,
+      'archived' => @archived,
+      'label_id' => @label.id
+    }
   end
 
   private
