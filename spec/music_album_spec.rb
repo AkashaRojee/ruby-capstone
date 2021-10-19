@@ -13,7 +13,7 @@ describe MusicAlbum do
     context 'The interval between publish_date up to now  is over 10 years and not on spotify' do
       item = MusicAlbum.new( false, 'Youtube', 'Invisible', '1929-02-20')
       it 'should return false' do
-        expect(item.can_be_archived?).to be_falsey
+        expect(item.can_be_archived?).to be(false)
       end
     end
 
