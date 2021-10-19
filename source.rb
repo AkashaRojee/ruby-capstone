@@ -10,7 +10,7 @@ class Source
 
   def add_item(item)
     @items.push item
-    item.add_source self
+    item.source self
   end
 
   def to_s
