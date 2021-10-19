@@ -59,7 +59,7 @@ class Main
     print 'Publish date of game: '
     publish_date = gets.chomp
     print 'Multiplayer game [y - Yes][n - No] ? '
-    is_multiplayer = gets.chomp
+    is_multiplayer = gets.chomp.downcase=='y'
     print 'Last played: '
     last_played = gets.chomp
 
