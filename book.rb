@@ -9,7 +9,7 @@ class Book < Item
   end
 
   def to_s
-    "Cover state: #{@cover_state}"
+    "[Book] Publisher: #{@publisher}, Cover state: #{@cover_state}\n#{super}"
   end
 
   def to_json(*args)

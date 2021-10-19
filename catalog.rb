@@ -4,26 +4,22 @@ require 'json'
 
 class Catalog
 
+  attr_reader :labels
+
   def initialize
     @books = []
+    @labels = []
   end
 
-  def add_book
-    puts 'ADD BOOK'
-
-    publish_date = prompt('Publish date')
-    publisher = prompt('Publisher')
-    cover_state = prompt('Cover state')
-
-    @books.push(Book.new(publish_date, publisher, cover_state))
-
-    puts 'Book added successfully'
+  def add_book(book)
+    @books.push(book)
   end
 
-  def prompt(data_item)
-    print "#{data_item}: "
-    gets.chomp
+  def add_label(label)
+    @labels.push(label)
   end
+
+  
 
   def list_books
     @books.each { |book| puts book }

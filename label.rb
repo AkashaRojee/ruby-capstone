@@ -14,4 +14,8 @@ class Label
     item.label = self
   end
 
+  def to_s
+    "[Label] Title: #{@title}, Color: #{@color}"
+  end
+
 end

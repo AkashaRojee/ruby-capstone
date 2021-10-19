@@ -1,6 +1,12 @@
+require_relative 'add_handlers'
+require_relative 'create_handlers'
 require_relative 'catalog'
 
 class Main
+
+  include Handlers
+  include AddHandlers
+  include CreateHandlers
 
   def initialize
     @catalog = Catalog.new
@@ -56,8 +62,8 @@ class Main
       # method_5 call
     when 6 
       # method_6 call
-    when 7 
-      @catalog.add_book
+    when 7
+      add_book_menu
     when 8 
       # method_8 call
     when 9 

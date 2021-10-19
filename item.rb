@@ -34,6 +34,10 @@ class Item
     @archived = can_be_archived?
   end
 
+  def to_s
+    "[Item] Publish date: #{@publish_date}, Archived: #{@archived}\nLabel: #{@label}"
+  end
+
   private
   def can_be_archived?
     (Date.today() - Date.parse(@publish_date)).to_i/365 > 10
