@@ -1,4 +1,5 @@
 require_relative 'book'
+require 'json'
 
 class Catalog
 
@@ -9,13 +10,11 @@ class Catalog
   def add_book
     puts 'ADD BOOK'
 
-    source = prompt('Source')
-    label = prompt('Label')
     publish_date = prompt('Publish date')
     publisher = prompt('Publisher')
     cover_state = prompt('Cover state')
 
-    @books.push(Book.new(source, label, publish_date, publisher, cover_state))
+    @books.push(Book.new(publish_date, publisher, cover_state))
 
     puts 'Book added successfully'
   end
@@ -27,6 +26,14 @@ class Catalog
 
   def list_books
     @books.each { |book| puts book }
+  end
+
+  def load_files
+    @books = load_books || []
+  end
+
+  def load_books
+    JSON.parse(File.read('books.json'), create_additions: true) if File.exist?('books.json')
   end
 
   def save_files

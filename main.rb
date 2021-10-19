@@ -7,9 +7,9 @@ class Main
   end
   
   def start_app
-    @catalog.save_files
-    choice = 0;
+    @catalog.load_files
 
+    choice = 0;
     until choice == 10
       show_menu
 
