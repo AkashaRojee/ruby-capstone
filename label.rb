@@ -11,7 +11,7 @@ class Label
 
   def add_item(item)
     @items.push item
-    item.add_label self
+    item.label self
   end
 
   def to_s
