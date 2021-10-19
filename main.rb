@@ -1,3 +1,7 @@
+require_relative 'game'
+require_relative 'author'
+require_relative 'source'
+
 class Main
   
   def start_app
@@ -45,4 +49,15 @@ class Main
   
 end
 
-Main.new.start_app
+# Main.new.start_app
+
+game = Game.new('2015/05/05', 'yes', '2018/08/08')
+source = Source.new('Online shop')
+author = Author.new('Martin', 'Eden')
+
+author.add_item(game)
+# source.add_item(game)
+game.source = source
+puts game.author.first_name
+puts game.source.name
+# puts source.name

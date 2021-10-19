@@ -1,5 +1,4 @@
 require_relative 'item'
-require_relative 'author'
 
 class Game < Item
     def initialize(publish_date, multiplayer , last_played_at)
