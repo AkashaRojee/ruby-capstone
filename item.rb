@@ -32,6 +32,11 @@ class Item
     label.items.push(self) unless label.items.include?(self)
   end
 
+  def to_s
+    "ID: #{@id}, Author: #{@author}, Genre: #{@genre},  \
+    Source: #{@source}, Label: #{@label}, Publish Date: #{@publish_date}"
+  end
+
   def move_to_archive
     @archived = can_be_archived?
   end
