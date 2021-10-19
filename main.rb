@@ -1,9 +1,6 @@
-require 'json'
-require_relative 'game'
-require_relative 'author'
-require_relative 'source'
-
+require_relative 'app'
 class Main
+  include App
   def initialize
     @items = []
     @sources = []
@@ -35,7 +32,7 @@ class Main
       add_game
     when 10
       puts 'Thank you for using this app!'
-      nil
+      save_data
     end
   end
 
@@ -50,44 +47,12 @@ class Main
                '8 - Add a music album',
                '9 - Add a game',
                '10 - Exit']
-
+    puts
     puts 'Please choose an option by entering a number: ', options
     gets.chomp.to_i
   end
 
-  def add_game
-    print 'Publish date of game: '
-    publish_date = gets.chomp
-    print 'Multiplayer game [y - Yes][n - No] ? '
-    is_multiplayer = gets.chomp.downcase=='y'
-    print 'Last played: '
-    last_played = gets.chomp
-
-    @items.push(Game.new(publish_date, is_multiplayer, last_played))
-    File.open('games.json', 'w') { |f| f.write JSON.generate(@items) }
-    start_app
-  end
-
-  def list_all_games
-    puts 'List of all games: '
-    @items.each { |item| puts item }
-    start_app
-  end
-
-  def parse_games
-    file = 'games.json'
-
-    if File.exist? file
-      data = JSON.parse(File.read(file), create_additions: true)
-
-      filtered = data.select { |item| item['json_class'] == 'Game' }
-      filtered.each do |game|
-        @items.push(Game.new(game['publish_date'], game['multiplayer'], game['last_played_at']))
-      end
-    else
-      []
-    end
-  end
+  
 end
 
 app = Main.new
