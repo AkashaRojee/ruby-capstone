@@ -2,12 +2,10 @@ require 'date'
 
 class Item
 
-  attr_accessor :genre, :author
+  attr_accessor :genre, :author, :source, :label
 
-  def initialize(source, label, publish_date)
+  def initialize(publish_date)
     @id = Random.rand(0..10_000)
-    @source = source
-    @label = label
     @publish_date = publish_date
     @archived = false
   end
@@ -20,6 +18,16 @@ class Item
   def author=(author)
     @author = author
     # AKASHA: after creating Author class - author.items.push(self) 
+  end
+
+  def source=(source)
+    @source = source
+    # AKASHA: after creating Source class - source.items.push(self) 
+  end
+
+  def label=(label)
+    @label = label
+    # AKASHA: after creating Label class - label.items.push(self) 
   end
 
   def move_to_archive
