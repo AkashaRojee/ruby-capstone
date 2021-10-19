@@ -12,6 +12,10 @@ class MusicAlbum < Item
     super && @on_spotify
   end
 
+  def to_s
+    "Album On Spotify: #{@on_spotify}, #{super}"
+  end
+
   def to_json(*args)
     {
       JSON.create_id => self.class.name,
