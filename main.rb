@@ -1,11 +1,12 @@
 require_relative 'add_handlers'
+require_relative 'prompt_handlers'
 require_relative 'create_handlers'
 require_relative 'catalog'
 
 class Main
 
-  include Handlers
   include AddHandlers
+  include PromptHandlers
   include CreateHandlers
 
   def initialize
@@ -13,22 +14,23 @@ class Main
   end
   
   def start_app
+    puts "Welcome to the catalog!\n\n***************\n***MAIN MENU***\n***************\n\n"
+
     @catalog.load_files
 
-    choice = 0;
-    until choice == 10
+    loop do
       show_menu
-
       choice = get_choice
-      choice = get_choice while choice < 1 || choice > 10
-
+      break if choice == 10
       handle_choice(choice)
     end
+
+    puts "\nThank you for using the catalog!\n"
 
   end
 
   def show_menu
-    options = [
+    puts [
       '1 - List all books',
       '2 - List all music albums',
       '3 - List all games',
@@ -40,11 +42,10 @@ class Main
       '9 - Add a game',
       '10 - Exit'
     ]
-    puts options
   end
 
   def get_choice
-    print 'Please choose an option by entering a number from 1 to 10: '
+    print "\nPlease choose an option by entering a number from 1 to 10: "
     gets.chomp.to_i
   end
   
@@ -70,7 +71,10 @@ class Main
       # method_9 call
     when 10
       @catalog.save_files
+    else
+      puts "\nERROR: Invalid option. See available options below.\n\n"
     end
   end
 end
+
 Main.new.start_app

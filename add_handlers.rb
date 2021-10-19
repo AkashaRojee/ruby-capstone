@@ -1,4 +1,3 @@
-require_relative 'handlers'
 require_relative 'item'
 require_relative 'book'
 

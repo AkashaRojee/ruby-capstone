@@ -1,4 +1,4 @@
-module Handlers
+module PromptHandlers
   def prompt_book_details
     puts
     puts "***ENTER BOOK DETAILS***"
