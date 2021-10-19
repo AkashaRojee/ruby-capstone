@@ -8,6 +8,7 @@ module AddHandlers
     book = create_book(book_details)
     @catalog.add_book(book)
     add_item(book)
+    puts "\nSUCCESS: Book added\n"
   end
 
   def add_item(item)

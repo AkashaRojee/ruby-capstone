@@ -35,7 +35,7 @@ class Item
   end
 
   def to_s
-    "[Item] Publish date: #{@publish_date}, Archived: #{@archived}\nLabel: #{@label}"
+    "Publish date: #{@publish_date}, Archived: #{@archived}\n#{@label}"
   end
 
   private

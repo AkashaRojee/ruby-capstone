@@ -1,8 +1,6 @@
 module PromptHandlers
   def prompt_book_details
-    puts
-    puts "***ENTER BOOK DETAILS***"
-    puts
+    puts "\n***ENTER BOOK DETAILS***\n\n"
     publish_date = prompt('Publish date')
     publisher = prompt('Publisher')
     cover_state = prompt('Cover state')
@@ -10,9 +8,7 @@ module PromptHandlers
   end
 
   def prompt_option(text, options)
-    puts
-    puts "***SELECT LABEL***"
-    puts
+    puts "\n***SELECT LABEL***\n\n"
     options&.each_with_index { |option, index| puts "#{index} - #{option}" }
     prompt(text)
   end

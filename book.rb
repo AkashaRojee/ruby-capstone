@@ -9,7 +9,7 @@ class Book < Item
   end
 
   def to_s
-    "[Book] Publisher: #{@publisher}, Cover state: #{@cover_state}\n#{super}"
+    "\n[BOOK ID #{@id}]\nPublisher: #{@publisher}, Cover state: #{@cover_state}\n#{super}\n"
   end
 
   def to_json(*args)

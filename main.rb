@@ -14,7 +14,7 @@ class Main
   end
   
   def start_app
-    puts "Welcome to the catalog!\n\n***************\n***MAIN MENU***\n***************\n\n"
+    puts "Welcome to the catalog!\n"
 
     @catalog.load_files
 
@@ -30,6 +30,7 @@ class Main
   end
 
   def show_menu
+    puts "\n***************\n***MAIN MENU***\n***************\n\n"
     puts [
       '1 - List all books',
       '2 - List all music albums',
@@ -72,7 +73,7 @@ class Main
     when 10
       @catalog.save_files
     else
-      puts "\nERROR: Invalid option. See available options below.\n\n"
+      puts "\nERROR: Invalid option. See available options below.\n"
     end
   end
 end
