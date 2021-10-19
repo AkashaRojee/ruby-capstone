@@ -1,10 +1,15 @@
 require_relative 'add_handlers'
-# require_relative 'create_handlers'
+require_relative 'create_handlers'
 
 class Main
 
+  def initialize
+    @music_albums = []
+    @genres = []
+  end
+
+  include CreateHandlers
   include AddHandlers
-  # include CreateHandlers
 
   def start_app
     puts "Welcome to the catalog!\n"
@@ -41,24 +46,35 @@ class Main
     gets.chomp.to_i
   end
   
+  def list_music_album
+    @music_albums.each { |ms_album| puts ms_album }
+  end
+
+  def list_genres
+    @genres.each { |genre| puts genre }
+  end
+
   def handle_choice(choice)
     case choice
     when 1 
       # method_1 call
     when 2 
       # method_2 call
+      list_music_album
     when 3 
       # method_3 call
     when 4 
       # method_4 call
     when 5 
       # method_5 call
+      list_genres
     when 6 
       # method_6 call
     when 7
       # method_7 call
     when 8 
       # method_8 call
+      add_music_album
     when 9 
       # method_9 call
     else

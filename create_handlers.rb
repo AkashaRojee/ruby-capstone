@@ -1,20 +1,12 @@
 require_relative 'music_album'
+require_relative 'genre'
 
 module CreateHandlers
 
-  def create_music_album
-    print 'Is album on Spotify? [y/n]: '
-    on_spotify = gets.chomp.downcase == 'y'
-
-    print 'Source:'
-    source = gets.chomp
-
-    print 'label:'
-    label = gets.chomp
-
-    print 'publish_date:'
-    publish_date = gets.chomp
-
-    MusicAlbum.new(true, source, label, publish_date)
+  def create_music_album(*args)
+    MusicAlbum.new(*args)
+  end
+  def create_genre(args)
+    Genre.new(args)
   end
 end
