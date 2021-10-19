@@ -16,7 +16,7 @@ class Main
   def start_app
     puts "Welcome to the catalog!\n"
 
-    @catalog.load_files
+    @catalog.load_data
 
     loop do
       show_menu

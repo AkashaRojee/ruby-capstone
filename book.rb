@@ -24,7 +24,6 @@ class Book < Item
   def self.json_create(object)
     book = new(object['publisher'], object['cover_state'], Time.parse(object['publish_date']))
     book.id = object['id']
-    puts book
     book
   end
 
