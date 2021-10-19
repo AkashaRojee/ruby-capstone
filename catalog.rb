@@ -28,4 +28,10 @@ class Catalog
   def list_books
     @books.each { |book| puts book }
   end
+
+  def save_files
+    File.write('books.json', JSON.generate(@books)) if @books.any?
+    File.write('persons.json', JSON.generate(@persons)) if @persons.any?
+    File.write('rentals.json', JSON.generate(@rentals)) if @rentals.any?
+  end
 end
