@@ -1,4 +1,5 @@
 require_relative 'book'
+require_relative 'label'
 require 'json'
 
 class Catalog
@@ -26,6 +27,10 @@ class Catalog
 
   def list_books
     @books.each { |book| puts book }
+  end
+
+  def list_labels
+    @labels.each { |label| puts label }
   end
 
   def load_files

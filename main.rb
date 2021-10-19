@@ -51,7 +51,7 @@ class Main
     when 3 
       # method_3 call
     when 4 
-      # method_4 call
+      @catalog.list_labels
     when 5 
       # method_5 call
     when 6 
