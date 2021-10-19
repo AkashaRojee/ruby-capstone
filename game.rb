@@ -1,7 +1,8 @@
 require_relative 'item'
+require_relative 'author'
 
 class Game < Item
-    def initialize(publish_date:, multiplayer: , last_played_at:)
+    def initialize(publish_date, multiplayer , last_played_at)
       super(publish_date: publish_date)
       @multiplayer = multiplayer
       @last_played_at = last_played_at
@@ -12,4 +13,3 @@ class Game < Item
       Date.today.year - Date.parse(@last_played_at).year > 2 
     end
 end
-
