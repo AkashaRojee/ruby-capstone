@@ -24,4 +24,8 @@ class Catalog
     print "#{data_item}: "
     gets.chomp
   end
+
+  def list_books
+    @books.each { |book| puts book }
+  end
 end
