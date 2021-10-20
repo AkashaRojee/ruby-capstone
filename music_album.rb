@@ -4,7 +4,7 @@ class MusicAlbum < Item
   attr_accessor :on_spotify
 
   def initialize(on_spotify, source, label, publish_date)
-    super(source, label, publish_date)
+    super(publish_date)
     @on_spotify = on_spotify
   end
 
@@ -17,15 +17,23 @@ class MusicAlbum < Item
      archived: #{@archived} \n publish_date: #{@publish_date} \n #{super}\n"
   end
 
+  # def to_json(*args)
+  #               {  JSON.create_id => self.class.name,
+  #                 'id' => @id,
+  #                 'on_spotify' => @on_spotify,
+  #                 'archived' => @archived,
+  #                 'publish_date' => @publish_date
+  #               }.to_json(*args)
+  # end
+
+
   def to_json(*args)
-                {  JSON.create_id => self.class.name,
-                  'id' => @id,
-                  'on_spotify' => @on_spotify,
-                  'source' => @source,
-                  'label' => @label,
-                  'archived' => @archived,
-                  'publish_date' => @publish_date
-                }.to_json(*args)
+    super.merge({  JSON.create_id => self.class.name,
+      'id' => @id,
+      'on_spotify' => @on_spotify,
+      'archived' => @archived,
+      'publish_date' => @publish_date
+    }).to_json(*args)
   end
 
   def self.json_create(object)
