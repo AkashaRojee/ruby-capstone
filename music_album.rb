@@ -3,8 +3,8 @@ require_relative 'item'
 class MusicAlbum < Item
   attr_accessor :on_spotify
 
-  def initialize(on_spotify, source, label, publish_date)
-    super(source, label, publish_date)
+  def initialize(on_spotify, _source, _label, publish_date)
+    super(_source, _label, publish_date)
     @on_spotify = on_spotify
   end
 
@@ -13,19 +13,18 @@ class MusicAlbum < Item
   end
 
   def to_s
-    "\nAlbum On Spotify: #{@on_spotify}, \n source: #{@source} \n label: #{@label} \n
+    "\nAlbum On Spotify: #{@on_spotify}, \n source: #{@_source} \n label: #{@_label} \n
      archived: #{@archived} \n publish_date: #{@publish_date} \n #{super}\n"
   end
 
   def to_json(*args)
-    super.merge({
-                  JSON.create_id => self.class.name,
+                {  JSON.create_id => self.class.name,
                   'on_spotify' => @on_spotify,
-                  'source' => @source,
-                  'label' => @label,
+                  'source' => @_source,
+                  'label' => @_label,
                   'archived' => @archived,
                   'publish_date' => @publish_date
-                }).to_json(*args)
+                }.to_json(*args)
   end
 
   def self.json_create(object)
