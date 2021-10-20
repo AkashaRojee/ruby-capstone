@@ -49,7 +49,7 @@ class Catalog
     end
   end
 
-def save_files
+  def save_files
     File.write('music_albums.json', JSON.generate(@music_albums)) if @music_albums.any?
     File.write('genres.json', JSON.generate(@genres)) if @genres.any?
   end
