@@ -4,11 +4,8 @@ require_relative 'game'
 require_relative 'label'
 require_relative 'author'
 require 'json'
-require_relative 'item'
-require_relative 'music_album'
-require_relative 'genre'
-class Catalog
 
+class Catalog
   attr_reader :books, :music_albums, :games, :genres, :authors, :labels
 
   def initialize
@@ -27,7 +24,7 @@ class Catalog
   def add_music_album(music_album)
     @music_albums.push(music_album)
   end
-  
+
   def add_game(game)
     @games.push(game)
   end
@@ -43,7 +40,7 @@ class Catalog
   def add_label(label)
     @labels.push(label)
   end
-  
+
   def list_books
     @books.each { |book| puts book }
   end
@@ -51,7 +48,7 @@ class Catalog
   def list_music_album
     @music_albums.each { |ms_album| puts ms_album }
   end
-  
+
   def list_games
     @games.each { |game| puts game }
   end
@@ -96,7 +93,6 @@ class Catalog
       items_json = JSON.parse(File.read(file_name))
 
       items_json.each_with_index do |item_json, index|
-
         genre = @genres.detect { |genre_json| genre_json.id == item_json['genre_id'] }
         author = @authors.detect { |author_json| author_json.id == item_json['author_id'] }
         label = @labels.detect { |label_json| label_json.id == item_json['label_id'] }
@@ -106,7 +102,6 @@ class Catalog
         item.genre = genre
         item.author = author
         item.label = label
-
       end
     end
   end

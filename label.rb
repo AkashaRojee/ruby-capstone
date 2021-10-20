@@ -1,5 +1,4 @@
 class Label
-
   attr_reader :items
   attr_accessor :id
 
@@ -33,5 +32,4 @@ class Label
     label.id = object['id']
     label
   end
-
 end
