@@ -1,9 +1,10 @@
 require 'date'
 
 class Item
-  attr_accessor :genre, :author
+  attr_accessor :id, :genre, :author, :label
+  attr_reader :archived
 
-  def initialize(_source, _label, publish_date)
+  def initialize(publish_date)
     @id = Random.rand(0..10_000)
     @publish_date = publish_date
     @archived = false
@@ -14,15 +15,38 @@ class Item
     genre.items.push(self) unless genre.items.include?(self)
   end
 
-  attr_writer :author
+  def author=(author)
+    @author = author
+    author.items.push(self) unless author.items.include?(self)
+  end
+
+  def label=(label)
+    @label = label
+    label.items.push(self) unless label.items.include?(self)
+  end
 
   def move_to_archive
     @archived = can_be_archived?
   end
 
+  def to_s
+    "Publish date: #{@publish_date}, Archived: #{@archived}\n#{@genre}\n#{@author}\n#{@label}"
+  end
+
+  def to_json(_args)
+    {
+      'id' => @id,
+      'publish_date' => @publish_date,
+      'archived' => @archived,
+      'genre_id' => @genre.id,
+      'author_id' => @author.id,
+      'label_id' => @label.id
+    }
+  end
+
   private
 
   def can_be_archived?
-    (Date.today - Date.parse(@publish_date)).to_i / 365 > 10
+    Date.today.year - Date.parse(@publish_date).year > 10
   end
 end

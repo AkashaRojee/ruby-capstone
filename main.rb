@@ -1,28 +1,30 @@
 require_relative 'add_handlers'
+require_relative 'prompt_handlers'
 require_relative 'create_handlers'
 require_relative 'catalog'
 
 class Main
-  include CreateHandlers
   include AddHandlers
+  include PromptHandlers
+  include CreateHandlers
 
   def initialize
     @catalog = Catalog.new
   end
-
+  
   def start_app
     puts "Welcome to the catalog!\n"
+
     @catalog.load_data
 
     loop do
       show_menu
       choice = get_choice
       break if choice == 10
-
       handle_choice(choice)
     end
 
-    @catalog.save_files
+    @catalog.save_data
     puts "\nThank you for using the catalog!\n"
   end
 
@@ -46,30 +48,27 @@ class Main
     print "\nPlease choose an option by entering a number from 1 to 10: "
     gets.chomp.to_i
   end
-
+  
   def handle_choice(choice)
     case choice
-    when 1
-      # method_1 call
-    when 2
-      # method_2 call
+    when 1 
+      @catalog.list_books
+    when 2 
       @catalog.list_music_album
-    when 3
-      # method_3 call
-    when 4
-      # method_4 call
-    when 5
-      # method_5 call
+    when 3 
+      @catalog.list_games
+    when 4 
+      @catalog.list_labels
+    when 5 
       @catalog.list_genres
-    when 6
-      # method_6 call
+    when 6 
+      @catalog.list_authors
     when 7
-      # method_7 call
-    when 8
-      # method_8 call
-      add_music_album
-    when 9
-      # method_9 call
+      add_book_menu
+    when 8 
+      add_music_album_menu
+    when 9 
+      add_game_menu
     else
       puts "\nERROR: Invalid option. See available options below.\n"
     end

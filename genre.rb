@@ -14,7 +14,7 @@ class Genre
   end
 
   def to_s
-    "Genre: #{@name}"
+    "Genre - Name: #{@name}"
   end
 
   def to_json(*args)
