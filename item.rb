@@ -1,8 +1,8 @@
 require 'date'
 
 class Item
-
   attr_accessor :id, :genre, :author, :source, :label
+  attr_reader :archived
 
   def initialize(publish_date)
     @id = Random.rand(0..10_000)
@@ -12,17 +12,17 @@ class Item
 
   def genre=(genre)
     @genre = genre
-    # AKASHA: after creating Genre class - genre.items.push(self) 
+    genre.items.push(self)
   end
 
   def author=(author)
     @author = author
-    # AKASHA: after creating Author class - author.items.push(self) 
+    author.items.push(self)
   end
 
   def source=(source)
     @source = source
-    # AKASHA: after creating Source class - source.items.push(self) 
+    source.items.push(self) unless source.items.include?(self)
   end
 
   def label=(label)
@@ -44,12 +44,13 @@ class Item
       'publish_date' => @publish_date,
       'archived' => @archived,
       'label_id' => @label.id
+      'source_id' => @source.id
     }
   end
 
   private
+
   def can_be_archived?
-    (Date.today() - Date.parse(@publish_date)).to_i/365 > 10
+    Date.today.year - Date.parse(@publish_date).year > 10
   end
 end
-

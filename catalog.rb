@@ -5,11 +5,13 @@ require 'json'
 
 class Catalog
 
-  attr_reader :labels
+  attr_reader :labels, :games, :sources
 
   def initialize
     @books = []
     @labels = []
+    @games = []
+    @sources = []
   end
 
   def add_book(book)
@@ -20,8 +22,14 @@ class Catalog
     @labels.push(label)
   end
 
-  
+  def add_game(game)
+    @games.push(game)
+  end
 
+  def add_source(source)
+    @sources.push(source)
+  end
+  
   def list_books
     @books.each { |book| puts book }
   end
@@ -30,10 +38,22 @@ class Catalog
     @labels.each { |label| puts label }
   end
 
+  def list_games
+    @games.each { |game| puts game }
+  end
+
+  def list_sources
+    @sources.each { |source| puts source }
+  end
+
   def load_data
     @books = load_files('books.json')
     @labels = load_files('labels.json')
     load_relationships(@books, @labels)
+
+    @games = load_files('games.json')
+    @sources = load_files('sources.json')
+    load_relationships(@games, @sources)
   end
 
   def load_files(file)
@@ -58,5 +78,7 @@ class Catalog
 def save_files
     File.write('books.json', JSON.generate(@books)) if @books.any?
     File.write('labels.json', JSON.generate(@labels)) if @labels.any?
+    File.write('games.json', JSON.generate(@games)) if @games.any?
+    File.write('sources.json', JSON.generate(@sources)) if @sources.any?
   end
 end

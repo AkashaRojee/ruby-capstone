@@ -7,8 +7,16 @@ module PromptHandlers
     return publish_date, publisher, cover_state
   end
 
+  def prompt_game_details
+    puts "\n***ENTER GAME DETAILS***\n\n"
+    publish_date = prompt('Publish date')
+    multiplayer = prompt('Multiplayer')
+    last_played_at = prompt('Last played at')
+    return publish_date, multiplayer, last_played_at
+  end
+
   def prompt_option(text, options)
-    puts "\n***SELECT LABEL***\n\n"
+    puts "\n***SELECT***\n\n"
     options&.each_with_index { |option, index| puts "#{index} - #{option}\n" }
     prompt(text)
   end
@@ -22,6 +30,13 @@ module PromptHandlers
     return title, color
   end
   
+  def prompt_source_details
+    puts
+    puts '***ENTER SOURCE DETAILS***'
+    puts
+    prompt('Name')
+  end
+
   def prompt(data_item)
     print "#{data_item}: "
     gets.chomp

@@ -4,7 +4,6 @@ require_relative 'create_handlers'
 require_relative 'catalog'
 
 class Main
-
   include AddHandlers
   include PromptHandlers
   include CreateHandlers
@@ -27,7 +26,6 @@ class Main
 
     @catalog.save_files
     puts "\nThank you for using the catalog!\n"
-
   end
 
   def show_menu
@@ -58,19 +56,19 @@ class Main
     when 2 
       # method_2 call
     when 3 
-      # method_3 call
+      @catalog.list_games
     when 4 
       @catalog.list_labels
     when 5 
       # method_5 call
     when 6 
-      # method_6 call
+      @catalog.list_sources
     when 7
       add_book_menu
     when 8 
       # method_8 call
     when 9 
-      # method_9 call
+      add_game_menu
     else
       puts "\nERROR: Invalid option. See available options below.\n"
     end
