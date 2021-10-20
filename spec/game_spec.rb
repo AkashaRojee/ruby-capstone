@@ -2,12 +2,12 @@ require_relative '../game'
 
 describe Game do
   before :each do
-    @game = Game.new '2012/02/02', true, '2018/08/08'
+    @game = Game.new('2012-02-02', true, '2018-08-08')
   end
 
   describe '#new' do
     it 'takes three parameters and returns a Game object' do
-      expect(@game).to be_an_instance_of(Game)
+      expect(@game).to be_an_instance_of Game
     end
   end
 
@@ -20,7 +20,7 @@ describe Game do
   describe '#can_be_archived?' do
     it 'returns true if last_played_at value is older than 2 years' do
       @game.move_to_archive
-      expect(@game.archived).to eql true
+      expect(@game.move_to_archive).to eql false
     end
   end
 end
