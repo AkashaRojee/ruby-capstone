@@ -16,7 +16,7 @@ class Label
   end
 
   def to_s
-    "Title: #{@title}, Color: #{@color}"
+    "Label - Title: #{@title}, Color: #{@color}"
   end
 
   def to_json(*args)

@@ -1,7 +1,7 @@
 require 'date'
 
 class Item
-  attr_accessor :id, :genre, :author, :source, :label
+  attr_accessor :id, :genre, :author, :label
   attr_reader :archived
 
   def initialize(publish_date)
@@ -17,12 +17,7 @@ class Item
 
   def author=(author)
     @author = author
-    author.items.push(self)
-  end
-
-  def source=(source)
-    @source = source
-    source.items.push(self) unless source.items.include?(self)
+    author.items.push(self) unless author.items.include?(self)
   end
 
   def label=(label)
@@ -35,7 +30,7 @@ class Item
   end
 
   def to_s
-    "Publish date: #{@publish_date}, Archived: #{@archived}\n#{@label}"
+    "Publish date: #{@publish_date}, Archived: #{@archived}\n#{@label}\n#{@author}"
   end
 
   def to_json(_args)
@@ -43,8 +38,8 @@ class Item
       'id' => @id,
       'publish_date' => @publish_date,
       'archived' => @archived,
+      'author_id' => @author.id,
       'label_id' => @label.id
-      'source_id' => @source.id
     }
   end
 

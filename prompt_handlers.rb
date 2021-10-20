@@ -30,11 +30,13 @@ module PromptHandlers
     return title, color
   end
   
-  def prompt_source_details
+  def prompt_author_details
     puts
-    puts '***ENTER SOURCE DETAILS***'
+    puts '***ENTER AUTHOR DETAILS***'
     puts
-    prompt('Name')
+    first_name = prompt('First name')
+    second_name = prompt('Second name')
+    return first_name, second_name
   end
 
   def prompt(data_item)

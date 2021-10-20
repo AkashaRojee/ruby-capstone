@@ -1,7 +1,7 @@
 require_relative 'book'
 require_relative 'label'
 require_relative 'game'
-require_relative 'source'
+require_relative 'author'
 
 module CreateHandlers
 
@@ -17,8 +17,8 @@ module CreateHandlers
     Game.new(*game_details)
   end
 
-  def create_source(source_details)
-    Source.new(*source_details)
+  def create_author(author_details)
+    Author.new(*author_details)
   end
 
 end

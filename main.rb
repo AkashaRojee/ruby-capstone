@@ -54,19 +54,19 @@ class Main
     when 1 
       @catalog.list_books
     when 2 
-      # method_2 call
+      #@catalog.list_music_albums
     when 3 
       @catalog.list_games
     when 4 
       @catalog.list_labels
     when 5 
-      # method_5 call
+      #@catalog.list_genres
     when 6 
-      @catalog.list_sources
+      @catalog.list_authors
     when 7
       add_book_menu
     when 8 
-      # method_8 call
+      #add_music_album_menu
     when 9 
       add_game_menu
     else
