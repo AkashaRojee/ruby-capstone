@@ -3,7 +3,7 @@ require_relative '../music_album'
 describe MusicAlbum do
   describe '#can_be_archived' do
     context 'The interval between publish_date up to now  is over 10 years and on spotify' do
-      item = MusicAlbum.new(true,'1929-02-20')
+      item = MusicAlbum.new(true, '1929-02-20')
       it 'should return true' do
         expect(item.can_be_archived?).to be(true)
       end

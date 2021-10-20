@@ -5,7 +5,7 @@ module PromptHandlers
     on_spotify = gets.chomp.downcase == 'y'
 
     publish_date = prompt('Publish date')
-    return  on_spotify, publish_date
+    [on_spotify, publish_date]
   end
 
   def prompt_option(text, options)
@@ -18,8 +18,7 @@ module PromptHandlers
     puts
     puts '***ENTER GENRE DETAILS***'
     puts
-    name = prompt('Name')
-    return name
+    prompt('Name')
   end
 
   def prompt(data_item)
