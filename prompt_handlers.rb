@@ -1,4 +1,5 @@
 module PromptHandlers
+<<<<<<< HEAD
   def prompt_book_details
     puts "\n***ENTER BOOK DETAILS***\n\n"
     publish_date = prompt('Publish date')
@@ -24,12 +25,26 @@ module PromptHandlers
 
   def prompt_option(text, options)
     puts "\n***SELECT***\n\n"
+=======
+  def prompt_music_album_details
+    puts "\n***ENTER MUSIC ALBUM DETAILS***\n\n"
+    print('Is album on Spotify? [y/n]: ')
+    on_spotify = gets.chomp.downcase == 'y'
+
+    publish_date = prompt('Publish date')
+    [on_spotify, publish_date]
+  end
+
+  def prompt_option(text, options)
+    puts "\n***SELECT GENRE***\n\n"
+>>>>>>> 203671d878a423aa3bb02ceb156f9527a6b215ff
     options&.each_with_index { |option, index| puts "#{index} - #{option}\n" }
     prompt(text)
   end
 
   def prompt_genre_details
     puts
+<<<<<<< HEAD
     puts "***ENTER GENRE DETAILS***"
     puts
     name = prompt('Name')
@@ -52,6 +67,11 @@ module PromptHandlers
     title = prompt('Title')
     color = prompt('color')
     return title, color
+=======
+    puts '***ENTER GENRE DETAILS***'
+    puts
+    prompt('Name')
+>>>>>>> 203671d878a423aa3bb02ceb156f9527a6b215ff
   end
 
   def prompt(data_item)

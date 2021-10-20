@@ -4,7 +4,9 @@ require_relative 'game'
 require_relative 'label'
 require_relative 'author'
 require 'json'
-
+require_relative 'item'
+require_relative 'music_album'
+require_relative 'genre'
 class Catalog
 
   attr_reader :books, :music_albums, :games, :genres, :authors, :labels

@@ -1,4 +1,5 @@
 require_relative 'item'
+require 'time'
 
 class MusicAlbum < Item
 
@@ -8,7 +9,6 @@ class MusicAlbum < Item
   end
 
   def to_s
-    "\n[MUSIC ALBUM ID #{@id}]\nOn Spotify: #{@on_spotify}\n#{super}\n"
   end
 
   def to_json(*args)
@@ -21,11 +21,3 @@ class MusicAlbum < Item
   def self.json_create(object)
     music_album = new(Date.parse(object['publish_date']), object['on_spotify'])
     music_album.id = object['id']
-    music_album
-  end
-
-
-  def can_be_archived?
-    super && @on_spotify
-  end
-end

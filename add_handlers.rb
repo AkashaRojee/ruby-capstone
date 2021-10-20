@@ -21,7 +21,7 @@ module AddHandlers
     music_album = create_music_album(music_album_details)
     @catalog.add_music_album(music_album)
     add_item(music_album)
-    puts "\nSUCCESS: Music Album added\n"
+    puts "\nSUCCESS: Music album added\n"
   end
 
   def add_game_menu
@@ -52,6 +52,7 @@ module AddHandlers
     else
       genre = @catalog.genres[option.to_i]
     end
+
     item.genre = genre
   end
 

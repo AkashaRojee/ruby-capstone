@@ -1,13 +1,13 @@
 require_relative 'add_handlers'
 require_relative 'prompt_handlers'
 require_relative 'create_handlers'
+require_relative 'prompt_handlers'
 require_relative 'catalog'
 
 class Main
   include AddHandlers
   include PromptHandlers
   include CreateHandlers
-
   def initialize
     @catalog = Catalog.new
   end
