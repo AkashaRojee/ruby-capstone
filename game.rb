@@ -2,13 +2,13 @@ require_relative 'item'
 
 class Game < Item
   def initialize(publish_date, multiplayer, last_played_at)
-    super(@publish_date = publish_date)
+    super(publish_date)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
   end
 
   def to_s
-    "[Game] id: #{@id} Publish date: #{@publish_date} Multiplayer: #{@multiplayer} Last played: #{@last_played_at}"
+    "[Game id: #{@id}]\n Multiplayer: #{@multiplayer} Last played: #{@last_played_at}\n#{super}\n"
   end
 
   def to_json(*args)
@@ -19,6 +19,12 @@ class Game < Item
       'multiplayer' => @multiplayer,
       'last_played_at' => @last_played_at
     }.to_json(*args)
+  end
+
+  def self.json_create(object)
+    game = new(Date.parse(object['publish_date']), object['multiplayer'], Date.parse(object['last_played_at']))
+    game.id = object['id']
+    game
   end
 
   private

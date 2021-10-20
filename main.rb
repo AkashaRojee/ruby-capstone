@@ -1,15 +1,56 @@
-require_relative 'app'
+require_relative 'add_handlers'
+require_relative 'prompt_handlers'
+require_relative 'create_handlers'
+require_relative 'catalog'
+
 class Main
-  include App
+  include AddHandlers
+  include PromptHandlers
+  include CreateHandlers
+
   def initialize
-    @items = []
-    @sources = []
-    @author = []
+    @catalog = Catalog.new
   end
 
   def start_app
-    choice = show_menu
-    choice = show_menu while choice < 1 || choice > 10
+    puts "Welcome to the catalog!\n"
+
+    @catalog.load_data
+
+    loop do
+      show_menu
+      choice = get_choice
+      break if choice == 10
+      handle_choice(choice)
+    end
+
+    @catalog.save_files
+    puts "\nThank you for using the catalog!\n"
+
+  end
+
+  def show_menu
+    puts "\n***************\n***MAIN MENU***\n***************\n\n"
+    puts [
+      '1 - List all books',
+      '2 - List all music albums',
+      '3 - List all games',
+      '4 - List all labels',
+      '5 - List all genres',
+      '6 - List all authors',
+      '7 - Add a book',
+      '8 - Add a music album',
+      '9 - Add a game',
+      '10 - Exit'
+    ]
+  end
+
+  def get_choice
+    print "\nPlease choose an option by entering a number from 1 to 10: "
+    gets.chomp.to_i
+  end
+
+   def handle_choice(choice)
 
     case choice
     when 1
@@ -17,44 +58,23 @@ class Main
     when 2
       # method_2 call
     when 3
-      list_all_games
+      @catalog.list_games
     when 4
       # method_4 call
     when 5
       # method_5 call
     when 6
-      # method_6 call
+      @catalog.list_sources
     when 7
       # method_7 call
     when 8
       # method_8 call
     when 9
-      add_game
-    when 10
-      puts 'Thank you for using this app!'
-      save_data
+      add_game_menu
+    else
+      puts "\nERROR: Invalid option. See available options below.\n"
     end
-  end
-
-  def show_menu
-    options = ['1 - List all books',
-               '2 - List all music albums',
-               '3 - List all games',
-               '4 - List all genres',
-               '5 - List all labels',
-               '6 - List all sources',
-               '7 - Add a book',
-               '8 - Add a music album',
-               '9 - Add a game',
-               '10 - Exit']
-    puts
-    puts 'Please choose an option by entering a number: ', options
-    gets.chomp.to_i
-  end
-
-  
+  end  
 end
 
-app = Main.new
-app.parse_games
-app.start_app
+Main.new.start_app

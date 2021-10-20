@@ -1,12 +1,10 @@
 require 'date'
 
 class Item
-  attr_reader :archived
-  attr_accessor :id
+  attr_accessor :id, :genre, :author, :source, :label
+
   def initialize(publish_date)
     @id = Random.rand(0..10_000)
-    # @source = source
-    # @label = label
     @publish_date = publish_date
     @archived = false
   end
@@ -21,13 +19,26 @@ class Item
     author.items.push(self)
   end
 
-  def source=(source)
+  def source(source)
     @source = source
-    source.items.push(self)
+    source.items.push(self) unless source.items.include?(self)
   end
 
   def move_to_archive
     @archived = can_be_archived?
+  end
+
+  def to_s
+    "Publish date: #{@publish_date}, Archived: #{@archived}\n#{@label}"
+  end
+
+  def to_json(_args)
+    {
+      'id' => @id,
+      'publish_date' => @publish_date,
+      'archived' => @archived,
+      'source_id' => @source.id
+    }
   end
 
   private
