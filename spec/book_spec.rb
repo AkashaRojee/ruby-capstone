@@ -2,7 +2,7 @@ require_relative '../book'
 
 describe Book do
   before :each do
-    @book = Book.new '2012/02/02', 'ProfPress', 'bad'
+    @book = Book.new '2002/02/02', 'ProfPress', 'bad'
   end
 
   describe '#new' do
