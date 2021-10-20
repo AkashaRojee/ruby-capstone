@@ -1,5 +1,7 @@
 require 'json'
-
+require_relative 'item'
+require_relative 'music_album'
+require_relative 'genre'
 class Catalog
   attr_reader :genres
 
@@ -44,6 +46,7 @@ class Catalog
       music_albums_json.each_with_index do |music_album_json, index|
         genre = genres.detect { |genre_json| genre_json.id == music_album_json['genre_id'] }
         music_album = music_albums[index]
+        puts music_album
         music_album.genre = genre
       end
     end

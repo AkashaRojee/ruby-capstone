@@ -1,9 +1,10 @@
 require_relative 'item'
+require 'time'
 
 class MusicAlbum < Item
   attr_accessor :on_spotify
 
-  def initialize(on_spotify, source, label, publish_date)
+  def initialize(on_spotify, publish_date)
     super(publish_date)
     @on_spotify = on_spotify
   end
@@ -13,8 +14,7 @@ class MusicAlbum < Item
   end
 
   def to_s
-    "\nAlbum On Spotify: #{@on_spotify}, \n source: #{@source} \n label: #{@label} \n
-     archived: #{@archived} \n publish_date: #{@publish_date} \n #{super}\n"
+    "\nAlbum On Spotify: #{@on_spotify}, \n archived: #{@archived} \n publish_date: #{@publish_date} \n #{super}\n"
   end
 
   # def to_json(*args)
@@ -37,8 +37,7 @@ class MusicAlbum < Item
   end
 
   def self.json_create(object)
-    music_album = new(object['on_spotify'], object['source'], object['label'],
-                      Date.parse(object['publish_date']))
+    music_album = new(object['on_spotify'], Time.parse(object['publish_date']))
     music_album.id = object['id']
     music_album
   end

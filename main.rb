@@ -1,11 +1,12 @@
 require_relative 'add_handlers'
 require_relative 'create_handlers'
+require_relative 'prompt_handlers'
 require_relative 'catalog'
 
 class Main
-  include CreateHandlers
   include AddHandlers
-
+  include PromptHandlers
+  include CreateHandlers
   def initialize
     @catalog = Catalog.new
   end
@@ -67,7 +68,7 @@ class Main
       # method_7 call
     when 8
       # method_8 call
-      add_music_album
+      add_music_album_menu
     when 9
       # method_9 call
     else
