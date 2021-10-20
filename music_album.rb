@@ -17,16 +17,6 @@ class MusicAlbum < Item
     "\nAlbum On Spotify: #{@on_spotify}, \n archived: #{@archived} \n publish_date: #{@publish_date} \n #{super}\n"
   end
 
-  # def to_json(*args)
-  #               {  JSON.create_id => self.class.name,
-  #                 'id' => @id,
-  #                 'on_spotify' => @on_spotify,
-  #                 'archived' => @archived,
-  #                 'publish_date' => @publish_date
-  #               }.to_json(*args)
-  # end
-
-
   def to_json(*args)
     super.merge({  JSON.create_id => self.class.name,
       'id' => @id,
