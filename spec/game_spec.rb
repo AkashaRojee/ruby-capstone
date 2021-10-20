@@ -1,6 +1,6 @@
 require_relative '../game'
 
-describe Game do 
+describe Game do
   before :each do
     @game = Game.new '2012/02/02', true, '2018/08/08'
   end
@@ -24,4 +24,3 @@ describe Game do
     end
   end
 end
-

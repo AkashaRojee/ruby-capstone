@@ -1,7 +1,7 @@
 require 'json'
 
 class Catalog
-attr_reader :games, :sources
+  attr_reader :games, :sources
 
   def initialize
     @games = []

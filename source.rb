@@ -30,5 +30,4 @@ class Source
     source.id = object['id']
     source
   end
-
 end

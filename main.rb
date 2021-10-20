@@ -21,12 +21,12 @@ class Main
       show_menu
       choice = get_choice
       break if choice == 10
+
       handle_choice(choice)
     end
 
     @catalog.save_files
     puts "\nThank you for using the catalog!\n"
-
   end
 
   def show_menu
@@ -37,7 +37,7 @@ class Main
       '3 - List all games',
       '4 - List all labels',
       '5 - List all genres',
-      '6 - List all authors',
+      '6 - List all sources',
       '7 - Add a book',
       '8 - Add a music album',
       '9 - Add a game',
@@ -50,8 +50,7 @@ class Main
     gets.chomp.to_i
   end
 
-   def handle_choice(choice)
-
+  def handle_choice(choice)
     case choice
     when 1
       # method_1 call
@@ -74,7 +73,7 @@ class Main
     else
       puts "\nERROR: Invalid option. See available options below.\n"
     end
-  end  
+  end
 end
 
 Main.new.start_app

@@ -1,7 +1,7 @@
 require_relative '../source'
 require_relative '../game'
 
-describe Source do 
+describe Source do
   before :each do
     @source = Source.new 'Online shop'
     @game = Game.new '2012/02/02', true, '2018/08/08'
@@ -19,6 +19,4 @@ describe Source do
       expect(@source.items).to include(@game)
     end
   end
-
 end
-

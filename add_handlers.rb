@@ -2,7 +2,6 @@ require_relative 'game'
 require_relative 'source'
 
 module AddHandlers
-  
   def add_game_menu
     game_details = prompt_game_details
     game = create_game(game_details)
@@ -16,7 +15,6 @@ module AddHandlers
   end
 
   def add_source(item)
-  
     option = prompt_option(
       "\nEnter existing source number or enter N to add new label",
       @catalog.sources
@@ -31,6 +29,5 @@ module AddHandlers
     end
 
     item.source = source
-  
   end
 end

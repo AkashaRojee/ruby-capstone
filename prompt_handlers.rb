@@ -4,7 +4,7 @@ module PromptHandlers
     publish_date = prompt('Publish date')
     multiplayer = prompt('Multiplayer')
     last_played_at = prompt('Last played at')
-    return publish_date, multiplayer, last_played_at
+    [publish_date, multiplayer, last_played_at]
   end
 
   def prompt_option(text, options)
@@ -15,12 +15,11 @@ module PromptHandlers
 
   def prompt_source_details
     puts
-    puts "***ENTER SOURCE DETAILS***"
+    puts '***ENTER SOURCE DETAILS***'
     puts
-    name = prompt('Name')
-    return name
+    prompt('Name')
   end
-  
+
   def prompt(data_item)
     print "#{data_item}: "
     gets.chomp
