@@ -13,24 +13,23 @@ class MusicAlbum < Item
   end
 
   def to_s
-    "\n[Album ID]: #{id} \n Album On Spotify: #{@on_spotify}, \n source: #{@source} \n label: #{@label} \n
-     archived: #{@archived} \n publish_date: #{@publish_date} \n #{super}"
+    "\nAlbum On Spotify: #{@on_spotify}, \n source: #{@source} \n label: #{@label} \n
+     archived: #{@archived} \n publish_date: #{@publish_date} \n #{super}\n"
   end
 
   def to_json(*args)
     super.merge({
       JSON.create_id => self.class.name,
-      'id' => id,
       'on_spotify' => @on_spotify,
       'source' => @source,
       'label' => @label,
       'archived' => @archived,
       'publish_date' => @publish_date
-    }).to_json(*args)
+      }).to_json(*args)
   end
 
   def self.json_create(object)
-    music_album = new(object['on_spotify'], Time.parse(object['publish_date']))
+    music_album = new(object['on_spotify'], object['source'], object['label'], object['archived'], Time.parse(object['publish_date']))
     music_album.id = object['id']
     music_album
   end

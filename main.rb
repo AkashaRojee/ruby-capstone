@@ -1,18 +1,19 @@
 require_relative 'add_handlers'
 require_relative 'create_handlers'
+require_relative 'catalog'
 
 class Main
-
-  def initialize
-    @music_albums = []
-    @genres = []
-  end
 
   include CreateHandlers
   include AddHandlers
 
+  def initialize
+    @catalog = Catalog.new
+  end
+
   def start_app
     puts "Welcome to the catalog!\n"
+    @catalog.load_data
 
     loop do
       show_menu
@@ -21,6 +22,7 @@ class Main
       handle_choice(choice)
     end
 
+    @catalog.save_files
     puts "\nThank you for using the catalog!\n"
 
   end
@@ -46,13 +48,6 @@ class Main
     gets.chomp.to_i
   end
   
-  def list_music_album
-    @music_albums.each { |ms_album| puts ms_album }
-  end
-
-  def list_genres
-    @genres.each { |genre| puts genre }
-  end
 
   def handle_choice(choice)
     case choice
@@ -60,14 +55,14 @@ class Main
       # method_1 call
     when 2 
       # method_2 call
-      list_music_album
+      @catalog.list_music_album
     when 3 
       # method_3 call
     when 4 
       # method_4 call
     when 5 
       # method_5 call
-      list_genres
+      @catalog.list_genres
     when 6 
       # method_6 call
     when 7

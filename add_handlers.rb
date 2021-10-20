@@ -19,23 +19,23 @@ def add_music_album
   publish_date = gets.chomp
 
   music_album = create_music_album(on_spotify, source, label, publish_date)
-  @music_albums.push(music_album)
-  add_genre(music_album)
+  @catalog.add_music_album(music_album)
+  add_item(music_album)
   puts "\nSUCCESS: Music Album added\n"
 
 end
-  def add_genre(item)
-    puts 'Select a genre or "n" to add new genre: '
-    @genres.each_with_index { |genre, idx| puts "#{idx} - #{genre}" }
+  def add_item(item)
+    print 'Select a genre or "n" to add new genre: '
+    @catalog.genres.each_with_index { |genre, idx| puts "#{idx} - #{genre}" }
     option = gets.chomp.downcase
     genre = nil
 
     if option == 'n'
       print 'Genre name: '
       genre = create_genre(gets.chomp)
-      @genres.push genre
+      @catalog.add_genre(genre)
     else
-      genre = @genres[option.to_i]
+      genre = @catalog.genres[option.to_i]
     end
     item.genre = genre
   end  
