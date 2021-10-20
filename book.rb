@@ -1,5 +1,4 @@
 require_relative 'item'
-require 'time'
 
 class Book < Item
 

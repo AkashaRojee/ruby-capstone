@@ -7,6 +7,13 @@ module PromptHandlers
     return publish_date, publisher, cover_state
   end
 
+  def prompt_music_album_details
+    puts "\n***ENTER MUSIC ALBUM DETAILS***\n\n"
+    publish_date = prompt('Publish date')
+    on_spotify = prompt('Album on Spotify [Y/N]')
+    return publish_date, on_spotify
+  end
+
   def prompt_game_details
     puts "\n***ENTER GAME DETAILS***\n\n"
     publish_date = prompt('Publish date')
@@ -21,15 +28,14 @@ module PromptHandlers
     prompt(text)
   end
 
-  def prompt_label_details
+  def prompt_genre_details
     puts
-    puts "***ENTER LABEL DETAILS***"
+    puts "***ENTER GENRE DETAILS***"
     puts
-    title = prompt('Title')
-    color = prompt('color')
-    return title, color
+    name = prompt('Name')
+    return name
   end
-  
+
   def prompt_author_details
     puts
     puts '***ENTER AUTHOR DETAILS***'
@@ -37,6 +43,15 @@ module PromptHandlers
     first_name = prompt('First name')
     second_name = prompt('Second name')
     return first_name, second_name
+  end
+
+  def prompt_label_details
+    puts
+    puts "***ENTER LABEL DETAILS***"
+    puts
+    title = prompt('Title')
+    color = prompt('color')
+    return title, color
   end
 
   def prompt(data_item)

@@ -24,7 +24,7 @@ class Main
       handle_choice(choice)
     end
 
-    @catalog.save_files
+    @catalog.save_data
     puts "\nThank you for using the catalog!\n"
   end
 
@@ -54,19 +54,19 @@ class Main
     when 1 
       @catalog.list_books
     when 2 
-      #@catalog.list_music_albums
+      @catalog.list_music_album
     when 3 
       @catalog.list_games
     when 4 
       @catalog.list_labels
     when 5 
-      #@catalog.list_genres
+      @catalog.list_genres
     when 6 
       @catalog.list_authors
     when 7
       add_book_menu
     when 8 
-      #add_music_album_menu
+      add_music_album_menu
     when 9 
       add_game_menu
     else

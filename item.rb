@@ -12,7 +12,7 @@ class Item
 
   def genre=(genre)
     @genre = genre
-    genre.items.push(self)
+    genre.items.push(self) unless genre.items.include?(self)
   end
 
   def author=(author)
@@ -30,7 +30,7 @@ class Item
   end
 
   def to_s
-    "Publish date: #{@publish_date}, Archived: #{@archived}\n#{@label}\n#{@author}"
+    "Publish date: #{@publish_date}, Archived: #{@archived}\n#{@genre}\n#{@author}\n#{@label}"
   end
 
   def to_json(_args)
@@ -38,6 +38,7 @@ class Item
       'id' => @id,
       'publish_date' => @publish_date,
       'archived' => @archived,
+      'genre_id' => @genre.id,
       'author_id' => @author.id,
       'label_id' => @label.id
     }
