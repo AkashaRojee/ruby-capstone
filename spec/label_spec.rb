@@ -4,7 +4,7 @@ require_relative '../book'
 describe Label do
   before :each do
     @label = Label.new 'Label' 'red'
-    @book = Book.new '2012/02/02', 'ProfPress', 'bad'
+    @book = Book.new '2010/02/02', 'ProfPress', 'bad'
   end
 
   describe '#new' do
