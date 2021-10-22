@@ -1,8 +1,6 @@
 require_relative 'item'
-require 'time'
 
 class Book < Item
-
   def initialize(publish_date, publisher, cover_state)
     super(publish_date)
     @publisher = publisher
@@ -15,10 +13,10 @@ class Book < Item
 
   def to_json(*args)
     super.merge({
-      JSON.create_id => self.class.name,
-      'publisher' => @publisher,
-      'cover_state' => @cover_state
-    }).to_json(*args)
+                  JSON.create_id => self.class.name,
+                  'publisher' => @publisher,
+                  'cover_state' => @cover_state
+                }).to_json(*args)
   end
 
   def self.json_create(object)
@@ -28,12 +26,12 @@ class Book < Item
   end
 
   private
+
   def can_be_archived?
-    if super || cover_state == 'bad'
+    if super || @cover_state == 'bad'
       true
     else
       false
     end
   end
-  
 end

@@ -1,16 +1,26 @@
 require_relative 'item'
 require_relative 'book'
+require_relative 'music_album'
 require_relative 'game'
+require_relative 'label'
 require_relative 'author'
+require_relative 'genre'
 
 module AddHandlers
-
   def add_book_menu
     book_details = prompt_book_details
     book = create_book(book_details)
     @catalog.add_book(book)
     add_item(book)
     puts "\nSUCCESS: Book added\n"
+  end
+
+  def add_music_album_menu
+    music_album_details = prompt_music_album_details
+    music_album = create_music_album(music_album_details)
+    @catalog.add_music_album(music_album)
+    add_item(music_album)
+    puts "\nSUCCESS: Music Album added\n"
   end
 
   def add_game_menu
@@ -22,8 +32,25 @@ module AddHandlers
   end
 
   def add_item(item)
+    add_genre(item)
     add_author(item)
     add_label(item)
+  end
+
+  def add_genre(item)
+    option = prompt_option(
+      "\nEnter existing genre number or enter N to add new genre",
+      @catalog.genres
+    )
+
+    if option == 'N'
+      genre_details = prompt_genre_details
+      genre = create_genre(genre_details)
+      @catalog.add_genre(genre)
+    else
+      genre = @catalog.genres[option.to_i]
+    end
+    item.genre = genre
   end
 
   def add_author(item)
@@ -44,7 +71,6 @@ module AddHandlers
   end
 
   def add_label(item)
-  
     option = prompt_option(
       "\nEnter existing label number or enter N to add new label",
       @catalog.labels
@@ -59,7 +85,5 @@ module AddHandlers
     end
 
     item.label = label
-  
   end
-
 end

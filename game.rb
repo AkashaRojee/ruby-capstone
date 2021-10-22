@@ -13,11 +13,11 @@ class Game < Item
 
   def to_json(*args)
     super.merge({
-      JSON.create_id => self.class.name,
-      'publish_date' => @publish_date,
-      'multiplayer' => @multiplayer,
-      'last_played_at' => @last_played_at
-    }).to_json(*args)
+                  JSON.create_id => self.class.name,
+                  'publish_date' => @publish_date,
+                  'multiplayer' => @multiplayer,
+                  'last_played_at' => @last_played_at
+                }).to_json(*args)
   end
 
   def self.json_create(object)
@@ -29,10 +29,6 @@ class Game < Item
   private
 
   def can_be_archived?
-    if super && (Date.today.year - Date.parse(@last_played_at).year) > 2
-      true
-    else
-      false
-    end
+    super && (Date.today.year - Date.parse(@last_played_at).year) > 2
   end
 end
