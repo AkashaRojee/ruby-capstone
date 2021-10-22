@@ -8,7 +8,6 @@ describe Item do
     @item = Item.new '2010/10/10'
   end
 
-
   describe '#can_be_archived?' do
     it 'not archived if item was published less than 10 years ago' do
       @item = Item.new '2020/10/10'
@@ -21,7 +20,6 @@ describe Item do
       expect(@item.archived).to eql true
     end
   end
-
 
   describe '#genre' do
     it 'sets the genre' do
@@ -43,5 +41,4 @@ describe Item do
       expect(@item.label).to be_an_instance_of Label
     end
   end
-
 end

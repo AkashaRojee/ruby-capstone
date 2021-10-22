@@ -1,5 +1,4 @@
 class Author
-  
   attr_reader :items
   attr_accessor :id
 

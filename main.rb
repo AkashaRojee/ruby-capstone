@@ -11,7 +11,7 @@ class Main
   def initialize
     @catalog = Catalog.new
   end
-  
+
   def start_app
     puts "Welcome to the catalog!\n"
 
@@ -19,8 +19,9 @@ class Main
 
     loop do
       show_menu
-      choice = get_choice
+      choice = prompt_choice
       break if choice == 10
+
       handle_choice(choice)
     end
 
@@ -44,35 +45,39 @@ class Main
     ]
   end
 
-  def get_choice
+  def prompt_choice
     print "\nPlease choose an option by entering a number from 1 to 10: "
     gets.chomp.to_i
   end
-  
+
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/CyclomaticComplexity
   def handle_choice(choice)
     case choice
-    when 1 
+    when 1
       @catalog.list_books
-    when 2 
+    when 2
       @catalog.list_music_album
-    when 3 
+    when 3
       @catalog.list_games
-    when 4 
+    when 4
       @catalog.list_labels
-    when 5 
+    when 5
       @catalog.list_genres
-    when 6 
+    when 6
       @catalog.list_authors
     when 7
       add_book_menu
-    when 8 
+    when 8
       add_music_album_menu
-    when 9 
+    when 9
       add_game_menu
     else
       puts "\nERROR: Invalid option. See available options below.\n"
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/MethodLength
 end
 
 Main.new.start_app

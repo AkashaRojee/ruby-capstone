@@ -1,7 +1,6 @@
 require_relative 'item'
 
 class MusicAlbum < Item
-
   def initialize(publish_date, on_spotify)
     super(publish_date)
     @on_spotify = on_spotify
@@ -13,9 +12,9 @@ class MusicAlbum < Item
 
   def to_json(*args)
     super.merge({
-      JSON.create_id => self.class.name,
-      'on_spotify' => @on_spotify
-    }).to_json(*args)
+                  JSON.create_id => self.class.name,
+                  'on_spotify' => @on_spotify
+                }).to_json(*args)
   end
 
   def self.json_create(object)

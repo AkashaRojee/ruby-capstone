@@ -25,7 +25,7 @@ describe Book do
   end
 
   it 'can be archived when published over 10 years ago' do
-    @book = Book.new('01/01/1995', 'ABC Publications', 'good', )
+    @book = Book.new('01/01/1995', 'ABC Publications', 'good')
     @book.move_to_archive
     expect(@book.archived).to eql true
   end
@@ -41,5 +41,4 @@ describe Book do
     @book.move_to_archive
     expect(@book.archived).to eql false
   end
-
 end

@@ -7,7 +7,6 @@ require_relative 'author'
 require_relative 'genre'
 
 module AddHandlers
-
   def add_book_menu
     book_details = prompt_book_details
     book = create_book(book_details)
@@ -39,7 +38,6 @@ module AddHandlers
   end
 
   def add_genre(item)
-
     option = prompt_option(
       "\nEnter existing genre number or enter N to add new genre",
       @catalog.genres
@@ -73,7 +71,6 @@ module AddHandlers
   end
 
   def add_label(item)
-  
     option = prompt_option(
       "\nEnter existing label number or enter N to add new label",
       @catalog.labels
@@ -88,7 +85,5 @@ module AddHandlers
     end
 
     item.label = label
-  
   end
-
 end

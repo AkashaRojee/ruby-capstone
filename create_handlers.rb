@@ -6,7 +6,6 @@ require_relative 'author'
 require_relative 'label'
 
 module CreateHandlers
-
   def create_book(book_details)
     Book.new(*book_details)
   end
