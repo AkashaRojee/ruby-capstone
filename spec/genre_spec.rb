@@ -8,7 +8,7 @@ describe Genre do
 
   describe '#add_item method' do
     it 'should add an item' do
-      item = Item.new('youtube', 'Visible', '1920-02-20')
+      item = Item.new('20/02/1990')
       @genre.add_item(item)
       expect(@genre.items).to include(item)
     end
