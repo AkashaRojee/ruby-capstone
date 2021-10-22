@@ -23,4 +23,23 @@ describe Book do
       expect(@book.archived).to eql true
     end
   end
+
+  it 'can be archived when published over 10 years ago' do
+    @book = Book.new('01/01/1995', 'ABC Publications', 'good', )
+    @book.move_to_archive
+    expect(@book.archived).to eql true
+  end
+
+  it 'can be archived when cover state is bad' do
+    @book = Book.new('10/12/2020', 'DEF Publications', 'bad')
+    @book.move_to_archive
+    expect(@book.archived).to eql true
+  end
+
+  it 'cannot be archived published less than 10 years ago and cover state is good' do
+    @book = Book.new('01/01/2021', 'GHI Publications', 'good')
+    @book.move_to_archive
+    expect(@book.archived).to eql false
+  end
+
 end

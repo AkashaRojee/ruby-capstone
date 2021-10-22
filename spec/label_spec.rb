@@ -3,8 +3,8 @@ require_relative '../book'
 
 describe Label do
   before :each do
-    @label = Label.new 'Label' 'red'
-    @book = Book.new '2010/02/02', 'ProfPress', 'bad'
+    @label = Label.new('Label', 'red')
+    @book = Book.new('2010/02/02', 'ProfPress', 'bad')
   end
 
   describe '#new' do
@@ -15,7 +15,7 @@ describe Label do
 
   describe '#add_book' do
     it 'check newly added item' do
-      @label.add_item @book
+      @label.add_item(@book)
       expect(@label.items).to include(@book)
     end
   end
